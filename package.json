@@ -1,0 +1,26 @@
+{
+  "name": "react-images-preview-uploader",
+  "version": "1.0.0",
+  "description": "Learning how to upload images, preview them and upload them on cllode-firestore",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renepromesse/react-images-preview-uploader.git"
+  },
+  "keywords": [
+    "react",
+    "image",
+    "preview",
+    "upload",
+    "firestore"
+  ],
+  "author": "Rene Promesse N.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/renepromesse/react-images-preview-uploader/issues"
+  },
+  "homepage": "https://github.com/renepromesse/react-images-preview-uploader#readme"
+}
