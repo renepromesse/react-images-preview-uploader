@@ -4,28 +4,16 @@ export const Image = () =>{
     const [displayImage, setDisplayImage] = React.useState([]);
     const [previewImage, setPreviewImage] = React.useState('');
     const handleInputChange = (event) =>{
-        console.log('files', event.target.files.length);
-        const files = Array(...event.target.files);
-        const a = ['a','b','c'];
-        files.map(data =>{
-            return console.log(data);
-        })
-        console.log('type of', Array(...files));
-        let images = [];
-        for(let i=0; i< files.length; i++){
-            const imgUrl = URL.createObjectURL(files[i]);
-            images.push(imgUrl);
-        }
-        return setDisplayImage([...displayImage,...images]);
-        // console.log('img blob', img);
+        return setDisplayImage([...displayImage,...event.target.files]);
     }
+    
     const handleImageClick =(event) =>{
         return setPreviewImage(event.target.src);
     }
     const handleImageRemove = (event) =>{
         URL.revokeObjectURL(event.target.src);
         setPreviewImage('');
-        return setDisplayImage(displayImage.filter(url => url !== event.target.src));
+        return setDisplayImage(displayImage.filter((url,index) => index !== parseInt(event.target.id)));
     }
     return(
         <div className="container">
@@ -38,9 +26,10 @@ export const Image = () =>{
 
                 <div style={{width:'300px', height: 'auto', border:'2px solid red'}} title="Double click on image to remove it">
                     <section className="image">
-                        {displayImage.map(imageUrl =>(
-                            <img src={imageUrl} onClick={handleImageClick} onDoubleClick={handleImageRemove} alt="the uploaded img"/>
-                        ))}
+                        {displayImage.map((imageUrl, index) =>{
+                            const img = URL.createObjectURL(imageUrl);
+                            return <img src={img} onClick={handleImageClick} onDoubleClick={handleImageRemove} id={index} alt="the uploaded img"/>
+                        })}
                     </section>
                 </div>
 
